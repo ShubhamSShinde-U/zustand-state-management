@@ -5,16 +5,18 @@ type Store = {
   addToList: (newItem: string) => void;
   removeFromList: (id: number) => void;
   newTaskValue: string;
-  addNewTaskValue:(task: string) => void;
+  addNewTaskValue: (task: string) => void;
 };
 
 const useStore = create<Store>((set) => ({
   listOfItem: ["take cup of tea"],
   newTaskValue: "",
+
   addToList: (newItem: string) =>
     set((state) => ({
       listOfItem: [newItem, ...state.listOfItem],
     })),
+
   removeFromList: (id: number) =>
     set((state) => ({
       listOfItem: state.listOfItem.filter(
@@ -24,9 +26,8 @@ const useStore = create<Store>((set) => ({
 
   addNewTaskValue: (task: string) =>
     set(() => ({
-      newTaskValue:task
+      newTaskValue: task,
     })),
 }));
-
 
 export default useStore;
